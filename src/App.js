@@ -1,14 +1,14 @@
-import logo from './logo.svg';
+// src/App.js
+import React from 'react';
+import FormBuilder from './components/FormBuilder';
 import './App.css';
-import DynamicForm from './DynamicForm';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Dynamic Form Builder</h1>
-      <DynamicForm />
+    <div>
+      <FormBuilder />
     </div>
   );
-}
+};
 
 export default App;
