@@ -1,79 +1,192 @@
-/* src/components/FormBuilder.css */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f7fa;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.form-builder-container {
+  border-radius: 8px;
+  display: flex;
+  gap: 100px;
+}
+
+.builderForm {
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-height: fit-content;
+  border-radius: 8px;
+}
+
+.formPreview {
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #4a90e2;
+  text-align: center;
+}
+
+.field-settings {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input:active,
+input:focus {
+  outline: 1px solid blue;
+}
+
+input[type="number"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  margin-left: 5px;
+}
+
+.add-field-btn,
+.add-option-btn {
+  background-color: #4a90e2;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+}
+
+.add-field-btn:hover,
+.add-option-btn:hover {
+  background-color: #357abd;
+}
+
+.options-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.option-item {
+  background-color: #e0e7ff;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.9em;
+}
+
+button {
+  font-size: 14px;
+  /* font-weight: 600; */
+  text-transform: uppercase;
+}
+
+.submitBtn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  background-color: rgb(56, 195, 56);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.submitBtn:hover {
+  background-color: rgb(58, 171, 58);
+}
+.previewBtn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  background-color: rgb(156, 195, 56);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.previewBtn:hover {
+  background-color: rgb(171, 207, 78);
+}
+
+.previewForm {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: whitesmoke;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formPreview {
+  min-height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.previewForm .formPreview .header {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.closeButton {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.closeButton:hover {
+  scale: 1.05;
+}
+
+@media screen and (max-width: 1000px) {
   .form-builder-container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 400px;
+    flex-direction: column;
+    gap: 30px;
   }
-  
-  h2 {
-    color: #4a90e2;
-    text-align: center;
+}
+@media screen and (max-width: 500px) {
+  .builderForm {
+    width: 90vw;
+    padding-left: 20px;
   }
-  
-  .field-settings {
-    margin-bottom: 20px;
+  .formPreview {
+    width: 90vw;
+    padding-left: 20px;
   }
-  
-  .input-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  input[type="checkbox"] {
-    margin-left: 5px;
-  }
-  
-  .add-field-btn, .add-option-btn {
-    background-color: #4a90e2;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-    display: block;
-    width: 100%;
-  }
-  
-  .add-field-btn:hover, .add-option-btn:hover {
-    background-color: #357ABD;
-  }
-  
-  .options-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 5px;
-  }
-  
-  .option-item {
-    background-color: #e0e7ff;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 0.9em;
-  }
-  
+}
