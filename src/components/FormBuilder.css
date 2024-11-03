@@ -37,7 +37,76 @@ h2 {
 
 .field-settings {
   margin-bottom: 20px;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  background-color: #fafafa;
 }
+
+.draggable-field-list {
+  margin-top: 20px;
+}
+
+.draggable-field.drag-over {
+  border: 2px dashed #4a90e2;
+  background-color: #e6f7ff;
+}
+
+.draggable-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  cursor: grab;
+}
+
+.remove-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #c0392b;
+}
+
+.draggable-field:active {
+  background-color: #e0e7ff;
+  opacity: 0.8;
+}
+
+.draggable-field.dragging {
+  opacity: 0.5; /* Slightly transparent when dragging */
+  border-color: #4a90e2;
+}
+
+.drop-zone {
+  border: 2px dashed #4a90e2;
+  background-color: #e6f7ff;
+  min-height: 40px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a90e2;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.drop-zone.drag-over {
+  background-color: #d0e9ff;
+  border-color: #357abd;
+}
+
+
 
 .input-group {
   margin-bottom: 15px;
