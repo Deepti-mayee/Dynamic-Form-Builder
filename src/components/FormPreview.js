@@ -20,18 +20,21 @@ const FormPreview = ({ fields, formTitle }) => {
   };
 
   // Handle form submission with validation
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     let isValid = true;
 
-    fields.forEach((field) => {
-      if (field.required && !validateRequired(formValues[field.id])) {
-        isValid = false;
-        alert(`${field.label} is required`);
-      }
-    });
+    // fields.forEach((field) => {
+    //   if (field.required && !validateRequired(formValues[field.id])) {
+    //     isValid = false;
+    //     alert(`${field.label} is required`);
+    //   }
+    // });
 
     if (isValid) {
+      let data = JSON.parse(localStorage.getItem('forms')) || [];
+      const newData = data?.filter(item => item.id !== fields.id);
+      newData.push(fields);
+      localStorage.setItem('forms', JSON.stringify(newData));
       alert("Form submitted successfully!");
     }
   };
@@ -40,7 +43,7 @@ const FormPreview = ({ fields, formTitle }) => {
     <>
       {preview ?
         <div className="previewForm">
-          <form className='formPreview' onSubmit={handleSubmit}>
+          <div className='formPreview'>
             <div>
               <div className="header">
                 <img src="/close.svg" alt="" className='closeButton' onClick={() => setPreview(false)} />
@@ -55,8 +58,8 @@ const FormPreview = ({ fields, formTitle }) => {
                 />
               ))}
             </div>
-            <button className='submitBtn' type="submit">Submit</button>
-          </form>
+            <button className='submitBtn' type="button" onClick={handleSubmit}>Save</button>
+          </div>
         </div>
         :
         <div className='formPreview'>
