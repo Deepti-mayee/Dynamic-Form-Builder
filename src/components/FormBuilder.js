@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import FormPreview from './FormPreview';
 import './FormBuilder.css';
+import SavedForms from './SavedForms';
+import toast from 'react-hot-toast';
 
 const FormBuilder = () => {
   const [formTitle, setFormTitle] = useState('');
@@ -13,11 +15,10 @@ const FormBuilder = () => {
     options: [],
   });
   const [dropdownOption, setDropdownOption] = useState('');
-  const [draggedIndex, setDraggedIndex] = useState(null);
 
   const addField = () => {
     if (!currentField.label) {
-      alert("Label is Required");
+      toast.error("Label is Required");
       return;
     }
     setFields([...fields, { ...currentField, id: Date.now() }]);
@@ -30,22 +31,6 @@ const FormBuilder = () => {
       options: [...prevField.options, dropdownOption],
     }));
     setDropdownOption('');
-  };
-
-  const handleDragStart = (index) => {
-    setDraggedIndex(index);
-  };
-
-  const handleDrop = (index) => {
-    const updatedFields = [...fields];
-    const draggedField = updatedFields.splice(draggedIndex, 1)[0];
-    updatedFields.splice(index, 0, draggedField);
-    setFields(updatedFields);
-    setDraggedIndex(null);
-  };
-
-  const removeField = (index) => {
-    setFields(fields.filter((_, i) => i !== index));
   };
 
   return (
@@ -123,28 +108,11 @@ const FormBuilder = () => {
             Add Field
           </button>
         </div>
-
-        {/* Draggable field list */}
-        <div className="draggable-field-list">
-          {fields.map((field, index) => (
-            <div
-              key={field.id}
-              className="draggable-field"
-              draggable
-              onDragStart={() => handleDragStart(index)}
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={() => handleDrop(index)}
-            >
-              <span>{field.label} ({field.type})</span>
-              <button type="button" onClick={() => removeField(index)} className="remove-btn">
-                Remove
-              </button>
-            </div>
-          ))}
-        </div>
       </div>
 
-      <FormPreview fields={fields} formTitle={formTitle} />
+      <FormPreview fields={fields} formTitle={formTitle} setFields={setFields} setCurrentField={setCurrentField} setFormTitle={setFormTitle} />
+
+      <SavedForms fields={fields} />
     </div>
   );
 };
